@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest.json",
+  "id": "/",
+  "name": "พจนานุกรมฉบับซาราซาคสกุล",
+  "short_name": "พจนานุกรมซาราซาค",
+  "description": "พจนานุกรมภาษาซาน — ค้นหาและเปิดดูรายละเอียดคำศัพท์",
+  "lang": "th",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "window-controls-overlay",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "prefer_related_applications": false,
+  "categories": [
+    "education",
+    "reference",
+    "books"
+  ],
+  "icons": [
+    {
+      "src": "/icons/app-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/app-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/app-logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "ค้นหาคำศัพท์",
+      "short_name": "ค้นหา",
+      "description": "เปิดพจนานุกรมพร้อมช่องค้นหา",
+      "url": "/?shortcut=search",
+      "icons": [
+        {
+          "src": "/icons/app-logo.png",
+          "sizes": "any",
+          "type": "image/png",
+          "purpose": "any"
+        }
+      ]
+    },
+    {
+      "name": "ระบบควบคุม",
+      "short_name": "ระบบควบคุม",
+      "description": "เปิดหน้าล็อกอินระบบควบคุม",
+      "url": "/?shortcut=admin",
+      "icons": [
+        {
+          "src": "/icons/app-logo.png",
+          "sizes": "any",
+          "type": "image/png",
+          "purpose": "any"
+        }
+      ]
+    }
+  ]
+}
