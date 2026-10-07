@@ -5,10 +5,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="พจนานุกรมซาราซาค">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="icon" type="image/png" sizes="32x32" href="./icons/app-logo.png">
-<link rel="icon" type="image/png" sizes="192x192" href="./icons/app-logo.png">
-<link rel="icon" type="image/png" sizes="512x512" href="./icons/app-logo.png">
-<link rel="apple-touch-icon" sizes="180x180" href="./icons/app-logo.png">
+<link rel="icon" type="image/jpeg" sizes="32x32" href="https://i.ibb.co/Pv1rhRH7/1791371132514.jpg">
+<link rel="icon" type="image/jpeg" sizes="192x192" href="https://i.ibb.co/Pv1rhRH7/1791371132514.jpg">
+<link rel="icon" type="image/jpeg" sizes="512x512" href="https://i.ibb.co/Pv1rhRH7/1791371132514.jpg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/Pv1rhRH7/1791371132514.jpg">
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="color-scheme" content="light"><meta name="theme-color" content="#ffffff"><title>พจนานุกรมฉบับซาราซาคสกุล</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -391,14 +391,14 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
 }
 
 
-</style></head><body><div class="scroll-edge" aria-hidden="true"></div><div id="loader"><div class="loader-tile"><img class="loader-logo" src="./icons/app-logo.png" alt=""></div></div>
+</style></head><body><div class="scroll-edge" aria-hidden="true"></div><div id="loader"><div class="loader-tile"><img class="loader-logo" src="https://i.ibb.co/Pv1rhRH7/1791371132514.jpg" alt=""></div></div>
 
 <div id="systemAlert" class="overlay" style="z-index:80"><div class="dialog"><div class="dialog-title">ระบบปิดปรับปรุง</div><div class="dialog-text" id="alertMessage"></div><div class="dialog-text" id="alertTime"></div></div></div>
 
 <div id="wordReader" class="fullscreen hidden"><div class="reader-panel"><div class="reader-top"><div class="reader-label">รายละเอียดคำศัพท์</div><button id="closeReaderBtn" class="reader-close" type="button" aria-label="ปิด"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div><div class="reader-body"><div id="readWordSpecial" class="reader-special"></div><div id="readWordNormal" class="reader-normal"></div><div id="readMeaning" class="reader-meaning"></div><div class="reader-hint">แตะปุ่มปิดเพื่อกลับสู่พจนานุกรม</div></div></div></div>
 
 <div id="userApp" class="page">
-<header class="topbar"><img id="appLogo" class="logo" src="./icons/app-logo.png" alt="โลโก้"><div class="brand"><div class="brand-title">พจนานุกรมฉบับซาราซาคสกุล</div><div class="brand-sub">ค้นหาคำศัพท์ภาษาซาน</div></div><div class="header-space"></div></header>
+<header class="topbar"><img id="appLogo" class="logo" src="https://i.ibb.co/Pv1rhRH7/1791371132514.jpg" alt="โลโก้"><div class="brand"><div class="brand-title">พจนานุกรมฉบับซาราซาคสกุล</div><div class="brand-sub">ค้นหาคำศัพท์ภาษาซาน</div></div><div class="header-space"></div></header>
 <section class="hero"><div class="eyebrow">ZAREPHIA DICTIONARY</div><h1>ค้นหาคำศัพท์</h1><p>ค้นหาและเปิดดูรายละเอียดคำศัพท์ภาษาซาน</p><div class="meta-row"><div class="meta-chip"><strong id="wordCount">0</strong> คำศัพท์</div><div class="meta-chip" id="lastUpdateText">ข้อมูล ณ --/--/---- --:-- น.</div></div></section>
 <div class="search-shell"><div class="search-box"><svg class="search-icon" viewBox="0 0 24 24"><path d="m21 21-4.3-4.3M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z"></path></svg><input id="searchInput" class="search-input" type="search" autocomplete="off" spellcheck="false" placeholder="ค้นหาคำศัพท์..."><button id="toggleLangBtn" class="lang-toggle" type="button" aria-label="สลับภาษาค้นหา"><span id="lang1" class="lang-letter">T</span><span class="swap-icon">⇆</span><span id="lang2" class="lang-letter">Z</span></button></div></div>
 <div class="section-head"><div class="section-title">คำศัพท์ล่าสุด / ผลการค้นหา</div><div class="section-count"><span id="resultCount">0</span> รายการ</div></div><main id="resultsArea" class="results"></main>
@@ -410,11 +410,30 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
 <div id="passwordModal" class="overlay hidden"><div class="dialog"><div class="dialog-title">เข้าสู่ระบบควบคุม</div><div class="dialog-text">กรอกรหัสผ่านเพื่อดำเนินการต่อ</div><input id="adminPasswordInput" class="dialog-input" type="password" autocomplete="off" placeholder="รหัสผ่าน"><div class="dialog-actions"><button id="passwordCancelBtn" class="dialog-btn muted" type="button">ยกเลิก</button><button id="passwordSubmitBtn" class="dialog-btn dark" type="button">เข้าสู่ระบบ</button></div></div></div>
 <div id="noticeModal" class="overlay hidden"><div class="dialog"><div id="noticeTitle" class="dialog-title">แจ้งเตือน</div><div id="noticeMessage" class="dialog-text"></div><div class="dialog-actions"><button id="noticeCloseBtn" class="dialog-btn dark" type="button">ตกลง</button></div></div></div>
 <div id="confirmModal" class="overlay hidden"><div class="dialog"><div class="dialog-title">ยืนยัน</div><div id="confirmMessage" class="dialog-text"></div><div class="dialog-actions"><button id="confirmCancelBtn" class="dialog-btn muted" type="button">ยกเลิก</button><button id="confirmOkBtn" class="dialog-btn danger" type="button">ยืนยัน</button></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
         // ==========================================
         // ตั้งค่า Google Apps Script URL (วาง URL ของคุณที่นี่)
         // ==========================================
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycbzubn-m1lCkhUQjo9O4bV_Qg66oakKt9oMgrGn_pcArKR-eLogRcnFP9-6NFMzY5NyW/exec'; 
+        const SUPABASE_URL = 'https://uhpdxwrgjfpuwmnemcyn.supabase.co';   // Project Settings → API → Project URL
+        const SUPABASE_ANON_KEY = 'sb_publishable_YM3IIIS_auuTgeXREytHrw_r61Yt1FO';                // Project Settings → API → anon public
+        const ADMIN_EMAIL = 'thanakunaemsun@gmail.com';                         // อีเมลผู้ดูแลที่สร้างใน Authentication → Users
+        const sb = (window.supabase && SUPABASE_URL.indexOf('YOUR-') < 0) ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+        async function touchLastUpdate() {
+            try { await sb.from('settings').upsert({ key: 'LastUpdate', value: new Date().toISOString() }, { onConflict: 'key' }); } catch (e) {}
+        }
+
+        async function loadAllWords() {
+            const size = 1000; let all = [];
+            for (let from = 0; ; from += size) {
+                const { data, error } = await sb.from('words').select('id,word,type,meaning').order('seq', { ascending: true }).range(from, from + size - 1);
+                if (error) throw error;
+                all = all.concat(data);
+                if (data.length < size) break;
+            }
+            return all;
+        }
 
         // State variables
         let database = [];
@@ -427,22 +446,24 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
 
         async function fetchData() {
             try {
-                if(GAS_URL === 'YOUR_WEB_APP_URL') {
-                    alert('กรุณาตั้งค่า GAS_URL ในโค้ดก่อนใช้งาน (บรรทัดที่ 262)');
+                if(!sb) {
+                    alert('กรุณาตั้งค่า SUPABASE_URL และ SUPABASE_ANON_KEY ในโค้ดก่อนใช้งาน');
                     document.getElementById('loader').style.display = 'none';
                     return;
                 }
 
-                const response = await fetch(GAS_URL);
-                const data = await response.json();
-                
-                if (data.status === 'success') {
-                    database = data.words;
-                    systemConfig = data.settings;
-                    
-                    checkSystemStatus();
-                    updateUI();
-                }
+                const [words, setRes] = await Promise.all([
+                    loadAllWords(),
+                    sb.from('settings').select('key,value')
+                ]);
+                if (setRes.error) throw setRes.error;
+                const cfg = {};
+                (setRes.data || []).forEach(r => cfg[r.key] = r.value);
+                database = words;
+                systemConfig = cfg;
+
+                checkSystemStatus();
+                updateUI();
             } catch (err) {
                 console.error("Failed to load data", err);
                 // ไม่แจ้ง alert รบกวนผู้ใช้ ปล่อยให้โหลดหน้าว่างๆ ไป
@@ -611,8 +632,15 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
             document.getElementById('adminPasswordInput').value=''; setTimeout(()=>document.getElementById('adminPasswordInput').focus(),80);
         }
         function closeAdminPassword() { const m=document.getElementById('passwordModal'); if(!m||m.classList.contains('hidden'))return; m.classList.remove('show'); setTimeout(()=>m.classList.add('hidden'),180); }
-        function submitAdminPassword() {
-            if(document.getElementById('adminPasswordInput').value==='Thanakun2011Aemsun'){closeAdminPassword();openAdmin();}
+        async function submitAdminPassword() {
+            let ok = false;
+            try {
+                if (sb) {
+                    const { error } = await sb.auth.signInWithPassword({ email: ADMIN_EMAIL, password: document.getElementById('adminPasswordInput').value });
+                    ok = !error;
+                }
+            } catch (e) { ok = false; }
+            if(ok){closeAdminPassword();openAdmin();}
             else { const i=document.getElementById('adminPasswordInput'); i.classList.add('input-error'); setTimeout(()=>i.classList.remove('input-error'),500); showNotice('รหัสผ่านไม่ถูกต้อง'); }
         }
         function showNotice(message,title='แจ้งเตือน'){document.getElementById('noticeTitle').innerText=title;document.getElementById('noticeMessage').innerText=message;const m=document.getElementById('noticeModal');m.classList.remove('hidden');requestAnimationFrame(()=>m.classList.add('show'));}
@@ -637,6 +665,7 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
         }
 
         function exitAdmin() {
+            if (sb) sb.auth.signOut().catch(()=>{});
             document.getElementById('adminApp').classList.add('hidden');
             document.getElementById('userApp').classList.remove('hidden');
             fetchData();
@@ -680,17 +709,18 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
             document.getElementById('loader').style.opacity = '1';
 
             try {
-                const res = await fetch(GAS_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'bulkAdd', data: newWords })
-                });
-                const out = await res.json();
-                if(out.status === 'success') {
+                let addErr = null;
+                for (let k = 0; k < newWords.length && !addErr; k += 500) {
+                    const { error } = await sb.from('words').insert(newWords.slice(k, k + 500));
+                    addErr = error;
+                }
+                if(!addErr) {
+                    await touchLastUpdate();
                     showNotice(`เพิ่มข้อมูล ${newWords.length} คำสำเร็จ`, 'บันทึกสำเร็จ');
                     document.getElementById('bulkInput').value = '';
                     await fetchData();
                 } else {
-                    showNotice(out.message || 'เกิดข้อผิดพลาด');
+                    showNotice(addErr.message || 'เกิดข้อผิดพลาด');
                 }
             } catch (e) {
                 showNotice('การเชื่อมต่อล้มเหลว');
@@ -717,16 +747,13 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
             document.getElementById('loader').style.opacity = '1';
             
             try {
-                const res = await fetch(GAS_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'delete', id: id })
-                });
-                const out = await res.json();
-                if(out.status === 'success') {
+                const { data: del, error: delErr } = await sb.from('words').delete().eq('id', id).select('id');
+                if(!delErr && del && del.length) {
+                    await touchLastUpdate();
                     await fetchData();
                     renderAdminWords();
                 } else {
-                    showNotice(out.message || 'เกิดข้อผิดพลาด');
+                    showNotice((delErr && delErr.message) || 'ลบไม่สำเร็จ (ลองเข้าสู่ระบบควบคุมใหม่)');
                 }
             } catch (e) {
                 showNotice('การเชื่อมต่อล้มเหลว');
@@ -745,16 +772,15 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
             document.getElementById('loader').style.opacity = '1';
 
             try {
-                const res = await fetch(GAS_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'updateSettings', settings: settings })
-                });
-                const out = await res.json();
-                if(out.status === 'success') {
+                const { error: setErr } = await sb.from('settings').upsert(
+                    Object.keys(settings).map(k => ({ key: k, value: String(settings[k] == null ? '' : settings[k]) })),
+                    { onConflict: 'key' }
+                );
+                if(!setErr) {
                     showNotice('บันทึกการตั้งค่าสำเร็จ', 'บันทึกสำเร็จ');
                     await fetchData();
                 } else {
-                    showNotice(out.message || 'เกิดข้อผิดพลาด');
+                    showNotice(setErr.message || 'เกิดข้อผิดพลาด');
                 }
             } catch (e) {
                 showNotice('การเชื่อมต่อล้มเหลว');

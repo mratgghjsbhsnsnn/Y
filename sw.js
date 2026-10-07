@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zarephia-dictionary-pwa-v3-1';
+const CACHE_NAME = 'zarephia-dictionary-pwa-v4-supabase';
 const APP_SHELL = [
   './',
   './index.html',
