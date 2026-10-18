@@ -56,20 +56,6 @@
           "value": "nosniff"
         }
       ]
-    },
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
-      ]
     }
-  ],
-  "functions": {
-    "api/translate.js": {
-      "maxDuration": 60
-    }
-  }
+  ]
 }

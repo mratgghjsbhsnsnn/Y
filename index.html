@@ -419,7 +419,6 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
 #ztGo:disabled{opacity:.6;cursor:progress}
 .zt-out{font-size:22px;line-height:1.5;word-break:break-word}
 .zt-card{cursor:default;padding-right:22px}
-.zt-notice{margin:10px 2px 18px;padding:10px 12px;border-left:3px solid #9a7b37;color:#67572f;font-size:13px;line-height:1.55;background:rgba(154,123,55,.07);border-radius:0 10px 10px 0;overflow-wrap:anywhere}
 .zt-chips{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}
 .zt-chips .meta-chip{box-shadow:var(--shadow-soft)}
 .zt-copy{height:38px;padding:0 14px;font-size:12px;font-weight:600;font-family:inherit}
@@ -443,12 +442,23 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
 <div id="viewTrans" class="hidden"><section class="hero"><div class="eyebrow">ZAAN TRANSLATE</div><h1>แปลภาษา</h1></section>
 <div class="admin-panel" style="margin-top:18px"><div class="zt-dir"><span id="ztFrom" class="zt-lang">ไทย</span><button id="ztSwap" class="lang-toggle" type="button" aria-label="สลับทิศทางการแปล"><span id="ztL1" class="lang-letter">T</span><span class="swap-icon">⇆</span><span id="ztL2" class="lang-letter">Z</span></button><span id="ztTo" class="zt-lang">ภาษาซาน</span></div><textarea id="ztInput" class="admin-textarea" maxlength="300" spellcheck="false" placeholder="พิมพ์ข้อความภาษาไทย…"></textarea><button id="ztGo" class="admin-action" type="button">แปล</button></div>
 <div id="ztResult"></div></div>
-<footer class="footer"><div>ข้อมูลการสงวนลิขสิทธิ์</div><div><strong>© 2026 Thanakun (https_filmmmmmmmmmmmm)</strong> สงวนลิขสิทธิ์ทุกประการ</div><span id="versionText" class="version">Ver.00.000.2026</span></footer>
+<footer class="footer"><div>ข้อมูลการสงวนลิขสิทธิ์</div><div><strong>© 2026 Thanakun (https_filmmmmmmmmmmmm)</strong> สงวนลิขสิทธิ์ทุกประการ</div><button type="button" id="policyLink" class="version" style="background:none;border:0;padding:0;font:inherit;text-decoration:underline;cursor:pointer">นโยบายข้อมูลและความเป็นส่วนตัว</button><span id="versionText" class="version">Ver.00.000.2026</span></footer>
 </div>
 
-<div id="adminApp" class="admin-screen hidden"><div class="admin-wrap"><div class="admin-top"><div class="admin-heading"><div class="admin-heading-icon">⌘</div><div><h1>ระบบควบคุม</h1><p>จัดการข้อมูลพจนานุกรม</p></div></div><button id="adminExitBtn" class="admin-exit" type="button">ออก</button></div><div id="adminTabs" class="admin-tabs"><button data-tab="add" class="active" type="button" onclick="switchAdminTab('add',this)">เพิ่มคำศัพท์</button><button data-tab="manage" type="button" onclick="switchAdminTab('manage',this)">จัดการคำศัพท์</button><button data-tab="settings" type="button" onclick="switchAdminTab('settings',this)">ตั้งค่าระบบ</button></div><div id="tab-add" class="admin-tab"><div class="admin-panel"><h2>เพิ่มคำศัพท์</h2><div class="admin-help"><b>รูปแบบ:</b><br>[คำ]<br>[ประเภทคำ] ความหมาย<br>.</div><textarea id="bulkInput" class="admin-textarea" placeholder="[สวัสดี]&#10;[ก] การทักทายกัน&#10;."></textarea><button class="admin-action" onclick="processBulkAdd()">บันทึกข้อมูล</button></div></div><div id="tab-manage" class="admin-tab hidden"><div class="admin-panel"><h2>จัดการคำศัพท์</h2><input id="adminSearch" class="admin-input" type="search" placeholder="ค้นหาคำศัพท์..." oninput="renderAdminWords()"><div id="adminWordList" class="admin-list"></div></div></div><div id="tab-settings" class="admin-tab hidden"><div class="admin-panel"><h2>ตั้งค่าระบบ</h2><div class="setting-row"><div><div class="setting-label">เปิดใช้งานหน้าผู้ใช้</div><div class="setting-note">กำหนดสถานะการให้บริการ</div></div><input type="checkbox" id="sysToggle" class="switch" onchange="toggleSystemStatus()"></div><div class="setting-row"><div><div class="setting-label">เปิดใช้ AI ใน Zaan Translate</div><div class="setting-note">ปิดเพื่อประหยัดโควตา (ยังแปลจากพจนานุกรมได้)</div></div><input type="checkbox" id="aiToggle" class="switch" checked></div><button class="admin-action" type="button" onclick="ztAnalyzeDuplicates()">วิเคราะห์บริบทคำซ้ำด้วย AI</button><div id="ztAdminStatus"></div><div style="height:14px"></div><textarea id="announceText" class="admin-textarea" style="min-height:120px" placeholder="ข้อความแจ้งเตือน"></textarea><input id="announceTime" class="admin-input" style="margin-top:8px" placeholder="เวลาแจ้งเตือน"><button class="admin-action" onclick="saveSettings()">บันทึกการตั้งค่า</button></div></div><div class="admin-footer">ระบบควบคุมพจนานุกรม</div></div></div>
+<div id="adminApp" class="admin-screen hidden"><div class="admin-wrap"><div class="admin-top"><div class="admin-heading"><div class="admin-heading-icon">⌘</div><div><h1>ระบบควบคุม</h1><p>จัดการข้อมูลพจนานุกรม</p></div></div><button id="adminExitBtn" class="admin-exit" type="button">ออก</button></div><div id="adminTabs" class="admin-tabs"><button data-tab="add" class="active" type="button" onclick="switchAdminTab('add',this)">เพิ่มคำศัพท์</button><button data-tab="manage" type="button" onclick="switchAdminTab('manage',this)">จัดการคำศัพท์</button><button data-tab="settings" type="button" onclick="switchAdminTab('settings',this)">ตั้งค่าระบบ</button></div><div id="tab-add" class="admin-tab"><div class="admin-panel"><h2>เพิ่มคำศัพท์</h2><div class="admin-help"><b>รูปแบบ:</b><br>[คำ]<br>[ประเภทคำ] ความหมาย<br>.</div><textarea id="bulkInput" class="admin-textarea" placeholder="[สวัสดี]&#10;[ก] การทักทายกัน&#10;."></textarea><button class="admin-action" onclick="processBulkAdd()">บันทึกข้อมูล</button></div></div><div id="tab-manage" class="admin-tab hidden"><div class="admin-panel"><h2>จัดการคำศัพท์</h2><input id="adminSearch" class="admin-input" type="search" placeholder="ค้นหาคำศัพท์..." oninput="renderAdminWords()"><div id="adminWordList" class="admin-list"></div></div></div><div id="tab-settings" class="admin-tab hidden"><div class="admin-panel"><h2>ตั้งค่าระบบ</h2><div class="setting-row"><div><div class="setting-label">เปิดใช้งานหน้าผู้ใช้</div><div class="setting-note">กำหนดสถานะการให้บริการ</div></div><input type="checkbox" id="sysToggle" class="switch" onchange="toggleSystemStatus()"></div><div id="zrfAdmin"></div><div style="height:14px"></div><textarea id="announceText" class="admin-textarea" style="min-height:120px" placeholder="ข้อความแจ้งเตือน"></textarea><input id="announceTime" class="admin-input" style="margin-top:8px" placeholder="เวลาแจ้งเตือน"><button class="admin-action" onclick="saveSettings()">บันทึกการตั้งค่า</button></div></div><div class="admin-footer">ระบบควบคุมพจนานุกรม</div></div></div>
 
 <div id="passwordModal" class="overlay hidden"><div class="dialog"><div class="dialog-title">เข้าสู่ระบบควบคุม</div><div class="dialog-text">กรอกรหัสผ่านเพื่อดำเนินการต่อ</div><input id="adminPasswordInput" class="dialog-input" type="password" autocomplete="off" placeholder="รหัสผ่าน"><div class="dialog-actions"><button id="passwordCancelBtn" class="dialog-btn muted" type="button">ยกเลิก</button><button id="passwordSubmitBtn" class="dialog-btn dark" type="button">เข้าสู่ระบบ</button></div></div></div>
+<div id="policyModal" class="overlay hidden"><div class="dialog"><div class="dialog-title">นโยบายข้อมูลและความเป็นส่วนตัว</div><div class="dialog-text" style="max-height:60vh;overflow:auto;text-align:left;line-height:1.75;font-size:14px">
+<p><strong>Zaan Translate และ ZRF.AI</strong> · ปรับปรุงล่าสุด 18 ตุลาคม 2569</p>
+<p><strong>1. ข้อมูลที่เก็บ</strong><br>เมื่อใช้หน้า Zaan Translate ระบบบันทึกข้อความที่พิมพ์ (ไม่เกิน 300 ตัวอักษร) ทิศทางการแปล ผลคำแปล ความหมายที่ระบบเลือก และเวลา ระบบไม่ขอชื่อ อีเมล หรือเบอร์โทร และไม่ต้องสมัครสมาชิก</p>
+<p><strong>2. วัตถุประสงค์</strong><br>ใช้ฝึกและปรับปรุงโมเดลแปลภาษา ZRF.AI ของเว็บไซต์นี้ให้แม่นยำขึ้น ไม่ใช้เพื่อโฆษณาหรือติดตามตัวบุคคล</p>
+<p><strong>3. ไม่ส่งให้ AI ภายนอก</strong><br>การแปลทำงานในระบบของเว็บไซต์เอง ข้อความของคุณไม่ถูกส่งไปยังบริการ AI ของบุคคลที่สาม และไม่มีการขายหรือแบ่งปันข้อมูลเพื่อการค้า</p>
+<p><strong>4. ที่เก็บข้อมูลและผู้เข้าถึง</strong><br>ข้อมูลเก็บบน Supabase และเว็บไซต์โฮสต์บน Vercel ซึ่งอาจเก็บบันทึกทางเทคนิค เช่น หมายเลข IP ตามนโยบายของผู้ให้บริการนั้น ผู้ใช้ทั่วไปเพิ่มประวัติได้อย่างเดียวและอ่านย้อนหลังไม่ได้ เฉพาะผู้ดูแลที่เข้าสู่ระบบเท่านั้นที่เปิดดู แก้ไข ยืนยัน หรือลบได้</p>
+<p><strong>5. โมเดลและความจำคำแปล</strong><br>ประโยคที่ผู้ดูแลยืนยันแล้วอาจถูกจำไว้ในโมเดลและแสดงเป็นคำแปลให้ผู้อื่นเห็น จึงโปรดอย่าพิมพ์ข้อมูลส่วนตัว ข้อมูลลับ หรือข้อมูลของผู้อื่นลงในช่องแปล</p>
+<p><strong>6. ระยะเวลาเก็บ</strong><br>ประวัติที่ยังไม่ผ่านการยืนยันจะถูกลบอัตโนมัติเมื่อครบ 90 วัน ส่วนประวัติที่ยืนยันแล้วเก็บไว้เป็นข้อมูลฝึกของโมเดลจนกว่าผู้ดูแลจะลบ</p>
+<p><strong>7. สิทธิของคุณ</strong><br>หากพิมพ์ข้อมูลที่ไม่ต้องการให้เก็บ ติดต่อผู้ดูแลเว็บไซต์พร้อมข้อความที่ต้องการลบ เพื่อให้ลบออกจากประวัติและโมเดล</p>
+<p><strong>8. การเปลี่ยนแปลง</strong><br>นโยบายนี้อาจปรับปรุงเมื่อระบบเปลี่ยนไป โดยแสดงวันที่ปรับปรุงล่าสุดไว้ด้านบน การใช้งานต่อถือว่ารับทราบนโยบายฉบับล่าสุด</p>
+</div><div class="dialog-actions"><button id="policyCloseBtn" class="dialog-btn dark" type="button">ปิด</button></div></div></div>
 <div id="noticeModal" class="overlay hidden"><div class="dialog"><div id="noticeTitle" class="dialog-title">แจ้งเตือน</div><div id="noticeMessage" class="dialog-text"></div><div class="dialog-actions"><button id="noticeCloseBtn" class="dialog-btn dark" type="button">ตกลง</button></div></div></div>
 <div id="confirmModal" class="overlay hidden"><div class="dialog"><div class="dialog-title">ยืนยัน</div><div id="confirmMessage" class="dialog-text"></div><div class="dialog-actions"><button id="confirmCancelBtn" class="dialog-btn muted" type="button">ยกเลิก</button><button id="confirmOkBtn" class="dialog-btn danger" type="button">ยืนยัน</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -702,7 +712,7 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
             document.getElementById('sysToggle').checked = (systemConfig.SystemStatus === 'Online');
             document.getElementById('announceText').value = systemConfig.Announcement || '';
             document.getElementById('announceTime').value = systemConfig.AnnounceTime || '';
-            document.getElementById('aiToggle').checked = String(systemConfig.TranslateAI || 'on').toLowerCase() !== 'off';
+            if (window.zrfAdminRefresh) zrfAdminRefresh();
             switchAdminTab('add', document.querySelector('#adminTabs button[data-tab=add]'));
         }
 
@@ -807,8 +817,7 @@ html.is-admin #systemAlert{display:none!important}   /* ในหน้าแอ
             let settings = {
                 SystemStatus: document.getElementById('sysToggle').checked ? 'Online' : 'Offline',
                 Announcement: document.getElementById('announceText').value,
-                AnnounceTime: document.getElementById('announceTime').value,
-                TranslateAI: document.getElementById('aiToggle').checked ? 'on' : 'off'
+                AnnounceTime: document.getElementById('announceTime').value
             };
 
             document.getElementById('loader').style.display = 'flex';
@@ -1179,71 +1188,65 @@ function degrade(){
 })();
 </script>
 <script>
-/* ===== Zaan Translate engine (ค้นพจนานุกรมก่อน → แคช → Gemini เฉพาะเมื่อจำเป็น) ===== */
+/* ===== ZRF.AI engine v2 — โมเดลแปลภาษาของระบบเอง (ไม่เรียก AI ภายนอก) ===== */
 (function (root) {
 'use strict';
 var PUNCT = /^[.,!?;:()"'“”‘’…]+$/;
-var PFX = /^(การ|ความ|ผู้|ที่|ของ)/;
+var PFX = /^(การ|ความ|ผู้)/;
+var STOP = {}; 'ใช้ เรียก แสดง ที่ ของ หรือ สิ่ง การ ความ ใน และ เพื่อ ซึ่ง ได้ เป็น กับ จาก อยู่ หมายถึง ไป มา ให้ แก่ โดย ตาม มี คือ นั้น นี้ ว่า จึง'.split(' ').forEach(function (w) { STOP[w] = 1; });
 
 function norm(s) { return String(s == null ? '' : s).toLowerCase().replace(/[\u2010-\u2015\u2212-]/g, '').replace(/\s+/g, ''); }
 function strip(s) { return norm(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[øœ]/g, 'o'); }
-function cyrb(str) {
-  var h1 = 0xdeadbeef, h2 = 0x41c6ce57;
-  for (var i = 0, ch; i < str.length; i++) { ch = str.charCodeAt(i); h1 = Math.imul(h1 ^ ch, 2654435761); h2 = Math.imul(h2 ^ ch, 1597334677); }
-  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
-  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
-  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
-}
-function splitSenses(m) {
-  return String(m == null ? '' : m).replace(/[\(（][^\)）]*[\)）]/g, ' ').split(/[,;\/|\n、，；]+/)
-    .map(function (x) { return x.trim(); }).filter(Boolean);
-}
-function firstGloss(m, max) {
-  var s = splitSenses(m)[0] || String(m || '').trim();
-  return s.length > (max || 30) ? s.slice(0, max || 30) : s;
-}
 
-function buildIndex(db, ctx) {
-  var ix = { byNorm: new Map(), byStrip: new Map(), senses: new Map(), byId: new Map(), maxSense: 2, list: [], ctx: ctx || {} };
-  db.forEach(function (e) {
-    e = { id: String(e.id), word: e.word, type: e.type, meaning: e.meaning, hint: (ctx && ctx[String(e.id)]) || '' };
-    ix.list.push(e); ix.byId.set(e.id, e);
-    var n = norm(e.word), st = strip(e.word);
-    if (!ix.byNorm.has(n)) ix.byNorm.set(n, []); ix.byNorm.get(n).push(e);
-    if (!ix.byStrip.has(st)) ix.byStrip.set(st, []); ix.byStrip.get(st).push(e);
-    e._n = norm(e.meaning);
-    splitSenses(e.meaning).forEach(function (s, pos) {
-      var k = norm(s); if (!k || k.length > 40) return;
-      var keys = [k]; var v = k.replace(PFX, ''); if (v !== k && v.length >= 2) keys.push(v);
-      keys.forEach(function (key) {
-        if (!ix.senses.has(key)) ix.senses.set(key, []);
-        ix.senses.get(key).push({ e: e, pos: pos });
-        if (key.length > ix.maxSense) ix.maxSense = key.length;
-      });
-    });
-  });
-  return ix;
+/* ---------- แยกความหมาย: คำแปลไทย (gl) + คำอธิบาย (desc) ----------
+   รูปแบบในพจนานุกรมมี 3 แบบ:  "ใช้… หมายถึง X, Y หรือ Z" | "X คำอธิบาย…" | "X"  */
+function parseMeaning(m) {
+  m = String(m == null ? '' : m).replace(/\s+/g, ' ').trim();
+  var gl = [], al = [], desc = '', core = false, slash = false;
+  var k = m.indexOf('หมายถึง');
+  if (k >= 0) {
+    core = true; desc = m.slice(0, k);
+    gl = m.slice(k + 7).split(/\s*(?:,|\/|;)\s*|\s+หรือ\s*|หรือ(?=[ก-๙])/).map(function (x) { return x.replace(/\([^)]*\)/g, '').trim(); });
+  } else {
+    var mm = m.match(/^(\S+)\s*(.*)$/); var first = mm ? mm[1] : m; desc = mm ? mm[2] : '';
+    if (/^\//.test(desc)) {                       // "ไป / เคลื่อนที่…"  หรือ  "บ้าน / เรือนพัก"
+      slash = true; desc = desc.replace(/^\/\s*/, '');
+      var al1 = desc.match(/^(\S{2,14})(?:\s|$)/); if (al1 && desc.split(' ').length <= 2) al.push(al1[1]);
+    }
+    gl = first.split(/,|\//).map(function (x) { return x.replace(/\([^)]*\)/g, '').trim(); });
+    var par = m.match(/\(([^)]*)\)/);
+    if (par) { desc += ' ' + par[1]; par[1].split(/\s*[,\/]\s*/).forEach(function (x) { x = x.trim(); if (x && x.length <= 20 && x.indexOf(' ') < 0) al.push(x); }); }
+  }
+  gl = gl.map(function (x) { return x.replace(/[?？]+$/, '').trim(); }).filter(function (x) { return x && x.length <= 40; });
+  if (!gl.length) gl = [m.slice(0, 40)];
+  var reg = /\((ทั่วไป|สุภาพ|ผู้หญิง|ผู้ชาย|ใช้กับ|ทางการ|คุยกับ)/.test(m);
+  var royal = /^(พระ|ฉลองพระ|เสด็จ|ทรง)/.test(gl[0]);
+  var cls = core ? 0 : (!desc.trim() ? 1 : (royal ? 4 : (reg || slash ? 3 : 2)));
+  return { gl: gl, al: al, desc: desc, cls: cls };
 }
+function posOf(type, desc) {
+  var t = String(type || '').split('/')[0];
+  if (/วิสามานยนาม/.test(t)) return 'PROPN';
+  if (/ลักษณนาม/.test(t)) return 'CLF';
+  if (/สรรพนาม/.test(t)) return 'PRON';
+  if (/วิเศษณ์/.test(t) && !/คุณศัพท์/.test(t)) return 'ADV';
+  if (/คุณศัพท์/.test(t)) return 'ADJ';
+  if (/บุพบท/.test(t)) return 'PREP';
+  if (/เชื่อม|สันธาน/.test(t)) return 'CONJ';
+  if (/ช่วยไวยากรณ์/.test(t)) return 'AUX';
+  if (/อุทาน/.test(t)) return 'INTJ';
+  if (/กริยา/.test(t)) return /^\s*ใช้วางประกอบกริยา/.test(desc || '') ? 'AUX' : 'V';
+  if (/นาม/.test(t)) return 'N';
+  return 'X';
+}
+function firstGloss(e) { return (e && e.gl && e.gl[0]) || ''; }
 
-function uniqEntries(arr) {
-  var seen = {}, out = [];
-  arr.forEach(function (e) { if (!seen[e.id]) { seen[e.id] = 1; out.push(e); } });
-  return out;
-}
-function distinctMeanings(c) {
-  var m = {}; c.forEach(function (e) { m[norm(e.meaning) + '|' + e.type] = 1; }); return Object.keys(m).length;
-}
-
-/* ---------- ไทย → ซาน ---------- */
 function thaiWords(text) {
   var out = [];
   if (typeof Intl !== 'undefined' && Intl.Segmenter) {
     var seg = new Intl.Segmenter('th', { granularity: 'word' });
     for (var s of seg.segment(text)) { var w = s.segment.trim(); if (w) out.push(w); }
-  } else {
-    text.split(/\s+/).forEach(function (w) { if (w) out.push(w); });
-  }
-  // แยกเครื่องหมายวรรคตอนที่ติดกับคำ
+  } else { text.split(/\s+/).forEach(function (w) { if (w) out.push(w); }); }
   var res = [];
   out.forEach(function (w) {
     var m = w.match(/^([.,!?;:()"'“”‘’…]*)(.*?)([.,!?;:()"'“”‘’…]*)$/);
@@ -1251,32 +1254,64 @@ function thaiWords(text) {
   });
   return res;
 }
+function descTokens(e) {
+  if (!e._dt) { var o = {}; thaiWords(e.desc || '').forEach(function (w) { w = norm(w); if (w.length >= 2 && !STOP[w] && !PUNCT.test(w)) o[w] = 1; }); e._dt = o; }
+  return e._dt;
+}
+
+function buildIndex(db) {
+  var ix = { byNorm: new Map(), byStrip: new Map(), senses: new Map(), byId: new Map(), maxSense: 2, list: [] };
+  db.forEach(function (r) {
+    var pm = parseMeaning(r.meaning);
+    var e = { id: String(r.id), word: r.word, type: r.type, meaning: r.meaning, gl: pm.gl, desc: pm.desc, cls: pm.cls, i: ix.list.length, pos: posOf(r.type, pm.desc) };
+    ix.list.push(e); ix.byId.set(e.id, e);
+    var n = norm(e.word), st = strip(e.word);
+    if (!ix.byNorm.has(n)) ix.byNorm.set(n, []); ix.byNorm.get(n).push(e);
+    if (!ix.byStrip.has(st)) ix.byStrip.set(st, []); ix.byStrip.get(st).push(e);
+    e._n = norm(pm.gl.join('|') + '|' + pm.desc);
+    e._g = pm.gl.map(norm);
+    pm.gl.concat(pm.al).forEach(function (s, pos) {
+      if (pos >= pm.gl.length) pos = 5;
+      var k = norm(s); if (!k || k.length > 40) return;
+      var keys = [k]; var v = k.replace(PFX, ''); if (v !== k && v.length >= 2) keys.push(v);
+      keys.forEach(function (key, ki) {
+        if (!ix.senses.has(key)) ix.senses.set(key, []);
+        ix.senses.get(key).push({ e: e, pos: ki ? 4 : pos });
+        if (key.length > ix.maxSense) ix.maxSense = key.length;
+      });
+    });
+  });
+  return ix;
+}
+function uniqEntries(arr) { var seen = {}, out = []; arr.forEach(function (e) { if (!seen[e.id]) { seen[e.id] = 1; out.push(e); } }); return out; }
+function distinct(c) { var m = {}; c.forEach(function (e) { m[e._g.join('|') + '|' + e.pos] = 1; }); return Object.keys(m).length; }
+function rank(arr) {
+  var prim = arr.filter(function (x) { return x.pos < 4; }); if (prim.length) arr = prim;
+  return uniqEntries(arr.slice().sort(function (a, b) { return (a.pos >= 4) - (b.pos >= 4) || a.e.cls - b.e.cls || a.pos - b.pos || a.e.i - b.e.i; }).map(function (x) { return x.e; })).slice(0, 6);
+}
+function primary(h) { return h && h.some(function (x) { return x.pos < 4; }); }
+/* ---------- ไทย → ซาน : แยกคำ ---------- */
 function resolveThai(ix, tok) {
   var k = norm(tok);
   if (PUNCT.test(tok)) return [{ src: tok, punct: true, cands: [] }];
-  if (/^[A-Za-zÀ-ž0-9\u1E00-\u1EFF]+$/.test(tok)) { // ตัวอักษรละติน = ชื่อ/คำซานที่พิมพ์มา → คงเดิม
-    return [{ src: tok, keep: true, cands: [] }];
-  }
+  if (/^[A-Za-zÀ-ž0-9\u1E00-\u1EFF]+$/.test(tok)) return [{ src: tok, keep: true, cands: [] }];
   var ex = ix.senses.get(k);
   if (ex) return [{ src: tok, exact: true, cands: rank(ex) }];
-  // ตัดเป็นคำย่อยตามพจนานุกรม (คำประสม)
   var parts = [], i = 0, ok = true;
   while (i < k.length) {
     var hit = null;
-    for (var L = Math.min(ix.maxSense, k.length - i); L >= 2; L--) { var h = ix.senses.get(k.substr(i, L)); if (h) { hit = [L, h]; break; } }
+    for (var L = Math.min(ix.maxSense, k.length - i); L >= 2; L--) { var h = ix.senses.get(k.substr(i, L)); if (primary(h)) { hit = [L, h]; break; } }
     if (!hit) { ok = false; break; }
     parts.push({ src: k.substr(i, hit[0]), exact: true, cands: rank(hit[1]) }); i += hit[0];
   }
   if (ok && parts.length > 1) return parts;
-  // ค้นแบบมีคำนั้นอยู่ในความหมาย
   if (k.length >= 2) {
-    var f = ix.list.filter(function (e) { return e._n.indexOf(k) >= 0; })
-      .sort(function (a, b) { return a._n.length - b._n.length; }).slice(0, 4);
+    var f = ix.list.filter(function (e) { return e._g.some(function (g) { return g.indexOf(k) >= 0; }); })
+      .sort(function (a, b) { return a._g[0].length - b._g[0].length; }).slice(0, 4);
     if (f.length) return [{ src: tok, fuzzy: true, cands: f }];
   }
   return [{ src: tok, unknown: true, cands: [] }];
 }
-/* รวมหลายส่วนที่ตัดคำแล้วติดกัน (เช่น เมื่อ+วาน) ถ้าพจนานุกรมมีคำประสมนั้น */
 function thaiTokens(ix, text) {
   var segs = thaiWords(text), out = [], i = 0;
   while (i < segs.length) {
@@ -1285,137 +1320,222 @@ function thaiTokens(ix, text) {
       var part = segs.slice(i, i + n);
       if (part.some(function (w) { return PUNCT.test(w); })) continue;
       var h = ix.senses.get(norm(part.join('')));
-      if (h) { out.push({ src: part.join(''), exact: true, cands: rank(h) }); i += n; done = true; }
+      if (primary(h)) { out.push({ src: part.join(''), exact: true, cands: rank(h) }); i += n; done = true; }
     }
     if (done) continue;
-    resolveThai(ix, segs[i]).forEach(function (t) { out.push(t); });
-    i++;
+    resolveThai(ix, segs[i]).forEach(function (t) { out.push(t); }); i++;
   }
   return out;
 }
-function rank(arr) {
-  return uniqEntries(arr.slice().sort(function (a, b) { return a.pos - b.pos || a.e._n.length - b.e._n.length; }).map(function (x) { return x.e; })).slice(0, 5);
-}
-
-/* ---------- ซาน → ไทย ---------- */
 function zaTokens(ix, text) {
   var raw = text.match(/[^\s.,!?;:()"“”‘’…]+|[.,!?;:()"“”‘’…]/g) || [];
   return raw.map(function (w) {
     if (PUNCT.test(w)) return { src: w, punct: true, cands: [] };
-    var c = ix.byNorm.get(norm(w));
-    if (c) return { src: w, exact: true, cands: uniqEntries(c) };
-    c = ix.byStrip.get(strip(w));
-    if (c) return { src: w, fuzzy: true, cands: uniqEntries(c) };
+    var c = ix.byNorm.get(norm(w)); if (c) return { src: w, exact: true, cands: uniqEntries(c) };
+    c = ix.byStrip.get(strip(w)); if (c) return { src: w, fuzzy: true, cands: uniqEntries(c) };
     if (/^\p{Lu}/u.test(w)) return { src: w, name: true, cands: [] };
     return { src: w, unknown: true, cands: [] };
   });
 }
+function tok(ix, dir, text) { return dir === 'TZ' ? thaiTokens(ix, text) : zaTokens(ix, text); }
 
-/* ---------- แปลในเครื่อง (ไม่ใช้ AI) ---------- */
-function localTranslate(dir, toks) {
-  var needAI = false, reasons = [], words = 0, parts = [], approx = [];
-  toks.forEach(function (t) {
-    if (t.punct) { if (parts.length) parts[parts.length - 1] += t.src; return; }
-    words++;
-    if (t.keep || t.name) { parts.push(t.src); return; }
-    if (t.unknown) { needAI = true; reasons.push('unknown'); parts.push(dir === 'TZ' ? '[' + t.src + ']' : t.src); return; }
-    if (t.fuzzy && dir === 'TZ') { needAI = true; reasons.push('fuzzy'); }
-    if (t.fuzzy && dir === 'ZT') approx.push(t.src);
-    if (distinctMeanings(t.cands) > 1) { needAI = true; reasons.push('dup'); }
-    var e = t.cands[0];
-    parts.push(dir === 'TZ' ? e.word : firstGloss(e.meaning, 28));
-  });
-  if (words > 5) { needAI = true; reasons.push('long'); }
-  return { out: parts.join(' '), needAI: needAI, reasons: reasons, words: words, approx: approx };
+/* ---------- ZRF.AI: ตัวถอดรหัส (Naive Bayes บริบท + Viterbi ตามไวยากรณ์ SVO) ---------- */
+var T0 = {
+  'S>PRON': 0.4, 'S>N': 0.4, 'S>PROPN': 0.4, 'S>V': -1.2, 'S>AUX': -1.5, 'S>ADV': -0.5, 'S>ADJ': -0.8, 'S>CLF': -0.8,
+  'PRON>V': 0.8, 'N>V': 0.8, 'PROPN>V': 0.8, 'PRON>AUX': 0.8, 'N>AUX': 0.8, 'PROPN>AUX': 0.8,
+  'AUX>V': 1.2, 'ADV>V': 0.5, 'V>N': 0.7, 'V>PRON': 0.7, 'V>PROPN': 0.7, 'V>ADV': 0.3, 'V>PREP': 0.3, 'V>CLF': 0.1,
+  'N>ADJ': 0.4, 'ADJ>N': 0.1, 'CLF>N': 0.3, 'N>CLF': -0.2, 'PREP>N': 0.6, 'PREP>PRON': 0.6, 'PREP>PROPN': 0.6,
+  'AUX>N': -1.0, 'AUX>PRON': -1.0, 'V>V': -0.7, 'V>AUX': -0.9, 'AUX>AUX': -0.5, 'AUX>E': -2.2, 'PREP>E': -1.5, 'CONJ>E': -2.2, 'AUX+>E': -2.2, 'N>N': -0.1, 'PRON>N': -0.2, 'PRON>PRON': -0.4
+};
+var TOT = typeof WeakMap !== 'undefined' ? new WeakMap() : null;
+function totals(model) {
+  var t = TOT && TOT.get(model.trans);
+  if (!t) { t = {}; Object.keys(model.trans).forEach(function (k) { var a = k.split('>')[0]; t[a] = (t[a] || 0) + model.trans[k]; }); if (TOT) TOT.set(model.trans, t); }
+  return t;
 }
-
-function payload(dir, text, toks) {
-  var k = [];
-  toks.forEach(function (t) {
-    if (t.punct) return;
-    var c = (t.cands || []).slice(0, 6).map(function (e) {
-      return {
-        id: String(e.id),
-        zarephia: String(e.word || '').slice(0, 100),
-        type: String(e.type || '').slice(0, 40),
-        meaning: String(e.meaning || '').slice(0, 140),
-        hint: String(e.hint || '').slice(0, 100)
-      };
-    });
-    k.push({ source: String(t.src || ''), match: t.unknown ? 'unknown' : (t.fuzzy ? 'fuzzy' : (t.exact ? 'exact' : 'candidate')), candidates: c });
-  });
-  return { d: dir, t: text, k: k };
-}
-
-/* ตรวจผลจาก AI: คำซานทุกคำต้องมีในพจนานุกรม ไม่เช่นนั้นสร้างจาก ids */
-function validateAI(ix, dir, res, toks) {
-  var allowed = {};
-  (toks || []).forEach(function (t) { (t.cands || []).forEach(function (e) { allowed[String(e.id)] = true; }); });
-  var ids = (Array.isArray(res.ids) ? res.ids : []).map(String).filter(function (id) { return !!allowed[id] && !!ix.byId.get(id); });
-  if (dir !== 'TZ') return { out: String(res.out || ''), ids: ids, bad: [] };
-  var bad = [];
-  String(res.out || '').split(/\s+/).forEach(function (w) {
-    var core = w.replace(/^[.,!?;:()"“”‘’…]+|[.,!?;:()"“”‘’…]+$/g, '');
-    if (!core || /^\[.*\]$/.test(core)) return;
-    if (!ix.byNorm.has(norm(core))) bad.push(core);
-  });
-  if (bad.length && ids.length) {
-    var rebuilt = ids.map(function (id) { var e = ix.byId.get(id); return e ? e.word : null; }).filter(Boolean);
-    if (rebuilt.length) return { out: rebuilt.join(' '), ids: ids, bad: [], rebuilt: true, note: 'ปรับผลลัพธ์ให้ใช้เฉพาะคำที่มีอยู่ในพจนานุกรม' };
+function trans(model, a, b) {
+  var base = T0[a.replace('+', '') + '>' + b] || 0;
+  if (a.charAt(a.length - 1) === '+' && b === 'V') base -= 1.0;
+  if (model && model.trans) {
+    var tot = totals(model)[a] || 0;
+    if (tot > 0) { var c = model.trans[a + '>' + b] || 0, w = tot / (tot + 40); return base * (1 - w) + w * 1.1 * Math.log((c + 0.3) / (tot + 3.6)); }
   }
-  return { out: String(res.out || ''), ids: ids, bad: bad };
+  return base;
+}
+function ctxOf(toks, i) {
+  var o = {};
+  toks.forEach(function (t, j) {
+    if (j === i || t.punct) return;
+    o[norm(t.src)] = 1;
+    var e = t.cands && t.cands[0]; if (e) e._g.forEach(function (g) { o[g] = 1; });
+  });
+  return Object.keys(o);
+}
+/* คะแนนบริบทของตัวเลือกทั้งชุด: P(ตัวเลือก | คำรอบข้าง) เทียบสัมพัทธ์กัน ไม่ให้คำที่พบบ่อยได้เปรียบเอง */
+var BG = typeof WeakMap !== 'undefined' ? new WeakMap() : null;
+function background(model) {
+  if (!model || !model.ctx) return { bg: {}, tot: 1 };
+  var r = BG && BG.get(model.ctx);
+  if (!r) { r = { bg: {}, tot: 0 }; Object.keys(model.ctx).forEach(function (id) { var L = model.ctx[id]; Object.keys(L).forEach(function (w) { r.bg[w] = (r.bg[w] || 0) + L[w]; r.tot += L[w]; }); }); r.tot = r.tot || 1; if (BG) BG.set(model.ctx, r); }
+  return r;
+}
+function emissions(model, cands, ctx) {
+  var B = background(model);
+  var info = cands.map(function (e) {
+    var p = descTokens(e), L = model && model.ctx && model.ctx[e.id], n = Object.keys(p).length + e._g.length;
+    if (L) Object.keys(L).forEach(function (k) { n += 3 * L[k]; });
+    return { p: p, L: L, n: n };
+  });
+  var pr = cands.map(function (e) { return ((model && model.pri && model.pri[e.id]) || 0) + 0.5; }), ps = pr.reduce(function (a, b) { return a + b; }, 0);
+  var out = pr.map(function (v) { return Math.log(v / ps); });
+  ctx.forEach(function (w) {
+    var c = info.map(function (x) { return (x.p[w] ? 1 : 0) + (x.L && x.L[w] ? 3 * x.L[w] : 0); });
+    if (!c.some(function (v) { return v > 0; })) return;
+    var bgw = (B.bg[w] || 0) / B.tot * 40, rel = c.map(function (v, i) { return (v + bgw) / (info[i].n + 40); }), tot = rel.reduce(function (a, b) { return a + b; }, 0);
+    rel.forEach(function (v, i) { out[i] += Math.log(v / tot); });
+  });
+  return out;
+}
+/* คืนรายการ entry ที่เลือกให้แต่ละ token (index ตรงกับ toks) */
+function decode(model, toks, usePos) {
+  var idx = [], n = toks.length;
+  toks.forEach(function (t, i) { if (!t.punct && t.cands && t.cands.length) idx.push(i); });
+  var picks = new Array(n);
+  if (!idx.length) return picks;
+  var ctxs = {}; idx.forEach(function (i) { if (toks[i].cands.length > 1) ctxs[i] = ctxOf(toks, i); });
+  var prev = [{ pos: 'S', key: 'S', seen: false, sc: 0, back: null, e: null }];
+  var layers = [];
+  idx.forEach(function (i) {
+    var cands = toks[i].cands, cur = [];
+    var amb = cands.length > 1 && distinct(cands) > 1, ems = amb ? emissions(model, cands, ctxs[i]) : null;
+    cands.forEach(function (e, r) {
+      var em = amb ? ems[r] - 0.001 * r : 0, best = null, bs = -1e9;
+      prev.forEach(function (p) { var s = p.sc + (usePos === false ? 0 : trans(model, p.key, e.pos)); if (s > bs) { bs = s; best = p; } });
+      var sn = e.pos === 'CONJ' ? false : (best.seen || e.pos === 'V');
+      cur.push({ pos: e.pos, key: e.pos + (sn ? '+' : ''), seen: sn, sc: bs + em, back: best, e: e });
+    });
+    layers.push(cur); prev = cur;
+  });
+  var end = prev.reduce(function (a, b) { return (b.sc + (usePos === false ? 0 : trans(model, b.key, 'E'))) > (a.sc + (usePos === false ? 0 : trans(model, a.key, 'E'))) ? b : a; });
+  for (var k = layers.length - 1; k >= 0; k--) { picks[idx[k]] = end.e; end = end.back; }
+  return picks;
 }
 
-var api = { norm: norm, strip: strip, cyrb: cyrb, splitSenses: splitSenses, firstGloss: firstGloss, buildIndex: buildIndex,
-  thaiWords: thaiWords, thaiTokens: thaiTokens, resolveThai: resolveThai, zaTokens: zaTokens, localTranslate: localTranslate, payload: payload,
-  validateAI: validateAI, distinctMeanings: distinctMeanings };
+function pickGloss(model, e, nextPos) {
+  var G = model && model.gls && model.gls[e.id];
+  if (G && e.gl.length > 1) {
+    var T = G[nextPos] || G['*'];
+    if (T) { var bi = 0, bc = -1; Object.keys(T).forEach(function (k) { if (T[k] > bc) { bc = T[k]; bi = +k; } }); return e.gl[bi] || e.gl[0]; }
+  }
+  return e.gl[0] || '';
+}
+function translate(model, ix, dir, text) {
+  var clauses = text.split(/(?<=[.!?\n])/).map(function (x) { return x.trim(); }).filter(Boolean);
+  var outs = [], picks = [];
+  clauses.forEach(function (cl) {
+    var m = model && model.mem && model.mem[dir + '|' + norm(cl)];
+    if (m) { outs.push(m); return; }
+    var toks = tok(ix, dir, cl), ch = decode(model, toks), parts = [];
+    toks.forEach(function (t, i) {
+      if (t.punct) { if (parts.length) parts[parts.length - 1] += t.src; return; }
+      if (t.keep || t.name) { parts.push(t.src); return; }
+      if (!t.cands.length) { parts.push(dir === 'TZ' ? '[' + t.src + ']' : t.src); return; }
+      var e = ch[i]; if (t.cands.length > 1) picks.push([t.src, e.id]);
+      var nj = i + 1; while (nj < toks.length && toks[nj].punct) nj++;
+      parts.push(dir === 'TZ' ? e.word : pickGloss(model, e, ch[nj] ? ch[nj].pos : 'E'));
+    });
+    outs.push(parts.join(' '));
+  });
+  return { out: outs.join(' '), picks: picks };
+}
+
+/* ---------- ฝึก / ประเมิน ---------- */
+function labelOf(toks, i, dir, out) {
+  var c = toks[i].cands; if (c.length < 2 || distinct(c) < 2) return null;
+  var on = norm(out), words = {};
+  String(out).split(/[\s.,!?;:()"“”]+/).forEach(function (w) { if (w) words[norm(w)] = 1; });
+  var hit = c.filter(function (e) { return dir === 'TZ' ? words[norm(e.word)] : e._g.some(function (g) { return g && on.indexOf(g) >= 0; }); });
+  if (dir === 'TZ' && hit.length > 1 && distinct(hit) === 1) return null;
+  return hit.length === 1 ? hit[0] : null;
+}
+function fit(ix, rows) {
+  var m = { v: 2, ctx: {}, pri: {}, mem: {}, trans: {}, gls: {} }, keys = [];
+  rows.forEach(function (r) {
+    var k = r.dir + '|' + norm(r.src); if (!(k in m.mem)) keys.push(k); m.mem[k] = r.out;
+    var toks = tok(ix, r.dir, r.src), chosen = [];
+    toks.forEach(function (t, i) {
+      if (t.punct || !t.cands.length) return;
+      var e = labelOf(toks, i, r.dir, r.out) || (t.cands.length === 1 ? t.cands[0] : null);
+      chosen.push(e);
+      if (e && t.cands.length > 1) {
+        m.pri[e.id] = (m.pri[e.id] || 0) + 1;
+        var L = m.ctx[e.id] || (m.ctx[e.id] = {}); ctxOf(toks, i).forEach(function (w) { L[w] = (L[w] || 0) + 1; });
+      }
+    });
+    if (r.dir === 'ZT') {
+      var ow = String(r.out).replace(/[.,!?;:()"“”]/g, ' ').split(/\s+/).filter(Boolean);
+      if (ow.length === chosen.length) chosen.forEach(function (e, i) {
+        if (!e || e.gl.length < 2) return;
+        var gi = e._g.indexOf(norm(ow[i])); if (gi < 0) return;
+        var nx = chosen[i + 1] ? chosen[i + 1].pos : 'E', G = m.gls[e.id] || (m.gls[e.id] = {});
+        [nx, '*'].forEach(function (k) { var T = G[k] || (G[k] = {}); T[gi] = (T[gi] || 0) + 1; });
+      });
+    }
+    var p = 'S', seen = false; chosen.forEach(function (e) { if (!e) { p = 'X'; return; } var kk = p + '>' + e.pos; m.trans[kk] = (m.trans[kk] || 0) + 1; seen = e.pos === 'CONJ' ? false : (seen || e.pos === 'V'); p = e.pos + (seen ? '+' : ''); });
+    if (p !== 'X') { var ke = p + '>E'; m.trans[ke] = (m.trans[ke] || 0) + 1; }
+  });
+  keys.slice(0, Math.max(0, keys.length - 12000)).forEach(function (k) { delete m.mem[k]; });
+  Object.keys(m.ctx).forEach(function (id) {
+    var L = m.ctx[id], ks = Object.keys(L);
+    if (ks.length > 60) { ks.sort(function (a, b) { return L[b] - L[a]; }); var nn = {}; ks.slice(0, 60).forEach(function (k) { nn[k] = L[k]; }); m.ctx[id] = nn; }
+  });
+  return m;
+}
+function evaluate(ix, model, rows) {
+  var n = 0, ok = 0, base = 0;
+  rows.forEach(function (r) {
+    var toks = tok(ix, r.dir, r.src), ch = decode(model, toks);
+    toks.forEach(function (t, i) { if (t.punct) return; var e = labelOf(toks, i, r.dir, r.out); if (!e) return; n++; if (ch[i].id === e.id) ok++; if (t.cands[0].id === e.id) base++; });
+  });
+  return { n: n, ok: ok, base: base };
+}
+function train(ix, rows) {
+  var ver = rows.filter(function (r) { return r.verified && r.src && r.out; }), trn = [], tst = [];
+  ver.forEach(function (r, i) { (ver.length >= 10 && i % 5 === 4 ? tst : trn).push(r); });
+  var ev = evaluate(ix, fit(ix, trn), tst), model = fit(ix, ver);
+  model.stats = { rows: ver.length, testLabels: ev.n, accModel: ev.n ? ev.ok / ev.n : null, accBase: ev.n ? ev.base / ev.n : null, at: new Date().toISOString() };
+  return model;
+}
+
+var api = { norm: norm, strip: strip, parseMeaning: parseMeaning, posOf: posOf, buildIndex: buildIndex, thaiWords: thaiWords, thaiTokens: thaiTokens,
+  zaTokens: zaTokens, fit: fit, evaluate: evaluate, translate: translate, decode: decode, train: train, tok: tok, firstGloss: firstGloss, distinct: distinct };
 if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.ZTE = api;
 })(typeof window !== 'undefined' ? window : globalThis);
 
-/* ===== Zaan Translate — ส่วนติดต่อผู้ใช้ + เรียก AI แบบประหยัด ===== */
+/* ===== Zaan Translate + ZRF.AI — ใช้ Supabase ทั้งหมด ไม่เรียก AI ภายนอก ===== */
 (function () {
 'use strict';
-var AI_URL = '/api/translate';
-var DEVICE_DAILY_CAP = 25;      // จำนวนครั้งที่เครื่องหนึ่งเรียก AI ได้ต่อวัน (ปรับได้)
-var MIN_GAP_MS = 0;             // ไม่หน่วงเวลาเพิ่มก่อนเรียก AI; ใช้ cache และ rate limit ฝั่งเซิร์ฟเวอร์แทน
-var COOLDOWN_MS = 10 * 60000;   // พักการเรียก AI หลังโควตาเต็ม (429)
-var CACHE_MAX = 150;
 var Z = window.ZTE;
-var S = { dir: 'TZ', ix: null, ixKey: '', ctx: {}, ctxLoaded: false, lastAI: 0, busy: false };
-
+var S = { dir: 'TZ', ix: null, ixKey: '', model: null, modelLoaded: false, busy: false };
 function $(id) { return document.getElementById(id); }
-function lsGet(k, d) { try { var v = localStorage.getItem('zt:' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
-function lsSet(k, v) { try { localStorage.setItem('zt:' + k, JSON.stringify(v)); } catch (e) {} }
-function today() { return new Date().toISOString().slice(0, 10); }
 function stripHy(s) { return String(s).replace(/[-\u2010\u2011]/g, ''); }
 
-/* ---------- แท็บ ---------- */
 window.ztView = function (v) {
   $('userApp').setAttribute('data-view', v);
   $('viewDict').classList.toggle('hidden', v !== 'dict');
   $('viewTrans').classList.toggle('hidden', v !== 'trans');
-  if (v === 'trans') { ensureIndex(); loadCtx(); }
+  if (v === 'trans') loadModel();
 };
-
-/* ---------- ดัชนีพจนานุกรม ---------- */
 function ensureIndex() {
-  var key = (database.length) + '|' + (systemConfig && systemConfig.LastUpdate || '') + '|' + Object.keys(S.ctx).length;
-  if (!S.ix || S.ixKey !== key) { S.ix = Z.buildIndex(database, S.ctx); S.ixKey = key; }
+  var key = database.length + '|' + (systemConfig && systemConfig.LastUpdate || '');
+  if (!S.ix || S.ixKey !== key) { S.ix = Z.buildIndex(database); S.ixKey = key; }
   return S.ix;
 }
-async function loadCtx() {
-  if (S.ctxLoaded || !sb) return; S.ctxLoaded = true;
-  try {
-    var size = 1000, all = [];
-    for (var from = 0; ; from += size) {
-      var r = await sb.from('word_contexts').select('word_id,hint').range(from, from + size - 1);
-      if (r.error) return; all = all.concat(r.data || []); if ((r.data || []).length < size) break;
-    }
-    all.forEach(function (x) { if (x.hint) S.ctx[String(x.word_id)] = x.hint; });
-  } catch (e) {}
+async function loadModel(force) {
+  if ((S.modelLoaded && !force) || !sb) return; S.modelLoaded = true;
+  try { var r = await sb.from('zrf_model').select('data').eq('id', 1).maybeSingle(); if (r && r.data) S.model = r.data.data; } catch (e) {}
+  if (!S.model) { try { var f = await fetch('./zrf-model.json'); if (f.ok) S.model = await f.json(); } catch (e) {} }
 }
-
-/* ---------- ทิศทาง ---------- */
 function setDir(d) {
   S.dir = d;
   $('ztL1').textContent = d === 'TZ' ? 'T' : 'Z'; $('ztL2').textContent = d === 'TZ' ? 'Z' : 'T';
@@ -1423,172 +1543,128 @@ function setDir(d) {
   $('ztInput').placeholder = d === 'TZ' ? 'พิมพ์ข้อความภาษาไทย…' : 'พิมพ์ข้อความภาษาซาน…';
   $('ztResult').innerHTML = '';
 }
-
-/* ---------- การ์ด ---------- */
-function entryCard(item) {
-  var card = document.createElement('button'); card.type = 'button'; card.className = 'word-card';
-  card.addEventListener('click', function () { openReader(item); });
-  var sp = document.createElement('div'); sp.className = 'word-special' + (zarephiaFontAvailable ? '' : ' font-fallback'); sp.textContent = stripHy(item.word);
-  var nm = document.createElement('div'); nm.className = 'word-normal'; nm.textContent = item.word;
-  var mn = document.createElement('div'); mn.className = 'word-meaning'; mn.textContent = '(' + item.type + ') ' + item.meaning + (item.hint ? ' · ' + item.hint : '');
-  var ar = document.createElement('div'); ar.className = 'word-arrow'; ar.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>';
-  card.append(sp, nm, mn, ar); return card;
-}
-function chip(text) { var c = document.createElement('div'); c.className = 'meta-chip'; c.textContent = text; return c; }
-
-function render(dir, text, r) {
+function render(dir, out) {
   var box = $('ztResult'); box.innerHTML = '';
   var card = document.createElement('div'); card.className = 'word-card zt-card';
   if (dir === 'TZ') {
-    var sp = document.createElement('div'); sp.className = 'word-special' + (zarephiaFontAvailable ? '' : ' font-fallback'); sp.textContent = stripHy(r.out); card.appendChild(sp);
-    var nm = document.createElement('div'); nm.className = 'word-normal'; nm.textContent = r.out; card.appendChild(nm);
-  } else {
-    var o = document.createElement('div'); o.className = 'zt-out'; o.textContent = r.out; card.appendChild(o);
-  }
+    var sp = document.createElement('div'); sp.className = 'word-special' + (zarephiaFontAvailable ? '' : ' font-fallback'); sp.textContent = stripHy(out); card.appendChild(sp);
+    var nm = document.createElement('div'); nm.className = 'word-normal'; nm.textContent = out; card.appendChild(nm);
+  } else { var o = document.createElement('div'); o.className = 'zt-out'; o.textContent = out; card.appendChild(o); }
   box.appendChild(card);
-  if (r.notice || r.note) {
-    var note = document.createElement('div'); note.className = 'zt-notice';
-    note.textContent = String(r.notice || r.note); box.appendChild(note);
-  }
 }
 
-/* ---------- แคช ---------- */
-function cacheKey(dir, text) {
-  return Z.cyrb('zaan-engine-v3-fast|' + dir + '|' + Z.norm(text) + '|' + database.length + '|' + (systemConfig && systemConfig.LastUpdate || '') + '|' + Object.keys(S.ctx).length);
-}
-function cacheGet(k) { var c = lsGet('cache', {}); return c[k] ? c[k].v : null; }
-function cachePut(k, v) {
-  var c = lsGet('cache', {}); c[k] = { v: v, t: Date.now() };
-  var ks = Object.keys(c); if (ks.length > CACHE_MAX) { ks.sort(function (a, b) { return c[a].t - c[b].t; }).slice(0, ks.length - CACHE_MAX).forEach(function (x) { delete c[x]; }); }
-  lsSet('cache', c);
-}
-async function sharedGet(k) {
-  try { if (!sb) return null; var r = await sb.from('translate_cache').select('v').eq('k', k).maybeSingle(); return r && r.data ? r.data.v : null; } catch (e) { return null; }
-}
-function sharedPut(k, dir, text, v) {
-  try { if (sb) sb.from('translate_cache').insert({ k: k, d: dir, t: text.slice(0, 300), v: v }).then(function () {}, function () {}); } catch (e) {}
-}
-
-/* ---------- สถานะ AI ---------- */
-function aiState() {
-  if (systemConfig && String(systemConfig.TranslateAI || '').toLowerCase() === 'off') return { ok: false, why: 'ผู้ดูแลปิดการใช้ AI ชั่วคราว' };
-  var cd = lsGet('cooldown', 0); if (Date.now() < cd) return { ok: false, why: 'โควตา AI ฟรีเต็มชั่วคราว' };
-  var dd = lsGet('day', { d: '', n: 0 }); if (dd.d === today() && dd.n >= DEVICE_DAILY_CAP) return { ok: false, why: 'ใช้ AI ครบโควตาของเครื่องวันนี้แล้ว' };
-  return { ok: true };
-}
-function countAI() { var dd = lsGet('day', { d: '', n: 0 }); if (dd.d !== today()) dd = { d: today(), n: 0 }; dd.n++; lsSet('day', dd); }
-function setStatus(t) { var s = $('ztStatus'); if (s) s.textContent = t; }
-
-async function callAI(body) {
-  var wait = S.lastAI + MIN_GAP_MS - Date.now(); if (wait > 0) await new Promise(function (r) { setTimeout(r, wait); });
-  S.lastAI = Date.now();
-  var ctl = new AbortController(), to = setTimeout(function () { ctl.abort(); }, 30000);
-  try {
-    var r = await fetch(AI_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: ctl.signal });
-    var j = await r.json().catch(function () { return {}; });
-    if (r.status === 429) { lsSet('cooldown', Date.now() + COOLDOWN_MS); return { err: 'quota' }; }
-    if (!r.ok) return { err: j.error || 'ai' };
-    return { data: j };
-  } catch (e) { return { err: 'net' }; } finally { clearTimeout(to); }
-}
-
-/* ---------- แปล ---------- */
 window.ztRun = async function () {
   if (S.busy) return;
   var text = $('ztInput').value.trim(); if (!text) return;
   if (!database.length) { showNotice('ยังไม่มีข้อมูลพจนานุกรม กรุณารอโหลดสักครู่'); return; }
-  S.busy = true; $('ztGo').disabled = true;
+  S.busy = true;
   try {
-    var dir = S.dir, ix = ensureIndex();
-    var toks = dir === 'TZ' ? Z.thaiTokens(ix, text) : Z.zaTokens(ix, text);
-    var loc = Z.localTranslate(dir, toks);
-    var firstEntries = [];
-    toks.forEach(function (t) { if (t.cands && t.cands[0]) firstEntries.push(t.cands[0]); });
-    var notes = [];
-    if (loc.approx && loc.approx.length) notes.push('สะกดไม่ตรงมาตรฐาน (ตรวจเครื่องหมายกำกับ): ' + loc.approx.join(', '));
-    var unk = toks.filter(function (t) { return t.unknown; }).map(function (t) { return t.src; });
-    if (unk.length) notes.push('ไม่พบในพจนานุกรม: ' + unk.join(', '));
-
-    var contentTokens = toks.filter(function (t) { return !t.punct; });
-    // Dictionary-only output is acceptable for one clear word. Phrases/sentences must be reviewed by Gemini.
-    var shouldAI = loc.needAI || contentTokens.length > 1;
-    if (!shouldAI) { render(dir, text, { out: loc.out, notice: 'คำศัพท์เดี่ยวตรงกับพจนานุกรม จึงไม่จำเป็นต้องเรียก AI' }); return; }
-
-    var key = cacheKey(dir, text);
-    var hit = cacheGet(key);
-    if (!hit) { hit = await sharedGet(key); if (hit) cachePut(key, hit); }
-    if (hit) { show(hit); return; }
-
-    var st = aiState();
-    if (!st.ok) {
-      render(dir, text, { out: loc.out, notice: st.why + ' — แสดงผลจากพจนานุกรมเบื้องต้น ซึ่งอาจแปลคลาดเคลื่อน' });
-      return;
-    }
-
-    $('ztResult').innerHTML = '';
-    var button = $('ztGo');
-    button.textContent = 'กำลังให้ Gemini วิเคราะห์ความหมาย…';
-    var res = await callAI(Z.payload(dir, text, toks));
-    if (res.err) {
-      var why = res.err === 'quota' ? 'โควตา AI เต็มชั่วคราว'
-        : (res.err === 'no_key' ? 'ยังไม่ได้ตั้งค่า GEMINI_API_KEY บน Vercel'
-        : (res.err === 'rate' ? 'มีการเรียก AI ถี่เกินไป กรุณารอสักครู่' : 'AI ใช้เวลานานหรือเชื่อมต่อไม่สำเร็จ'));
-      render(dir, text, { out: loc.out, notice: why + ' — ด้านล่างเป็นเพียงผลจากพจนานุกรม อาจยังไม่ถูกต้องตามบริบท' });
-      return;
-    }
-    countAI();
-    var v = res.data; cachePut(key, v); if (!res.data.cached) sharedPut(key, dir, text, v);
-    show(v);
-
-    function show(v) {
-      var checked = Z.validateAI(ix, dir, v, toks);
-      render(dir, text, { out: checked.out, note: v.note || checked.note || '' });
-    }
-  } finally { S.busy = false; $('ztGo').disabled = false; $('ztGo').textContent = 'แปล'; }
+    await loadModel();
+    var dir = S.dir, r = Z.translate(S.model, ensureIndex(), dir, text);
+    render(dir, r.out);
+    // เก็บประวัติทุกครั้งไว้ใน Supabase เพื่อใช้ฝึก ZRF.AI
+    try { if (sb) sb.from('zrf_history').insert({ dir: dir, src: text.slice(0, 300), out: r.out.slice(0, 600), picks: r.picks.slice(0, 20), verified: false }).then(function () {}, function () {}); } catch (e) {}
+  } finally { S.busy = false; }
 };
-function addAlt(toks, notes) {
-  toks.forEach(function (t) {
-    if (t.cands && Z.distinctMeanings(t.cands) > 1) notes.push('«' + t.src + '» มีหลายความหมาย (' + t.cands.length + ') — เลือกอันดับแรก');
-  });
-}
 
-/* ---------- ผู้ดูแล: วิเคราะห์คำซ้ำด้วย AI (ทำครั้งเดียว ประหยัดเครดิตตอนแปล) ---------- */
-window.ztAnalyzeDuplicates = function () {
-  askConfirm('ให้ AI วิเคราะห์บริบทของคำซ้ำ (ครั้งละไม่เกิน 75 กลุ่ม) ใช้โควตา AI ฟรีเล็กน้อย ต้องการดำเนินการต่อหรือไม่?', runAnalyze);
-};
-async function runAnalyze() {
-  var out = $('ztAdminStatus');
+/* ---------- ผู้ดูแล: ZRF.AI ---------- */
+function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+function pct(x) { return x == null ? '-' : (x * 100).toFixed(1) + '%'; }
+window.zrfAdminRefresh = async function () {
+  var box = $('zrfAdmin'); if (!box || !sb) return; box.innerHTML = '';
+  var title = el('div', 'setting-label', 'ZRF.AI — โมเดลแปลภาษาของระบบเอง'); box.appendChild(title);
+  var st = el('div', 'setting-note', 'กำลังโหลด…'); box.appendChild(st);
+  var act = el('div'); act.style.cssText = 'display:flex;flex-direction:column;gap:10px;margin:12px 0'; box.appendChild(act);
+  var bTrain = el('button', 'admin-action', 'ฝึกโมเดล ZRF.AI'); bTrain.type = 'button'; act.appendChild(bTrain);
+  var msg = el('div', 'setting-note', ''); box.appendChild(msg);
   try {
-    await loadCtx();
-    var by = new Map();
-    database.forEach(function (e) { var k = Z.norm(e.word); if (!by.has(k)) by.set(k, []); by.get(k).push(e); });
-    var groups = []; by.forEach(function (arr) { if (arr.length > 1 && arr.some(function (e) { return !S.ctx[String(e.id)]; })) groups.push(arr); });
-    if (!groups.length) { out.textContent = 'ไม่มีคำซ้ำที่ต้องวิเคราะห์เพิ่ม'; return; }
-    var todo = groups.slice(0, 75), done = 0, saved = 0;
-    for (var i = 0; i < todo.length; i += 15) {
-      var chunk = todo.slice(i, i + 15);
-      out.textContent = 'กำลังวิเคราะห์… ' + done + '/' + todo.length + ' กลุ่ม';
-      var res = await callAI({ mode: 'ctx', groups: chunk.map(function (g) { return { w: g[0].word, e: g.map(function (e) { return [String(e.id), e.type, e.meaning]; }) }; }) });
-      if (res.err) { out.textContent = (res.err === 'quota' ? 'โควตา AI เต็ม' : 'เชื่อมต่อ AI ไม่ได้') + ' — บันทึกแล้ว ' + saved + ' รายการ ลองใหม่ภายหลัง'; return; }
-      var rows = (res.data.items || []).filter(function (x) { return x.id && x.hint; }).map(function (x) { return { word_id: String(x.id), hint: String(x.hint).slice(0, 80) }; });
-      if (rows.length) {
-        var u = await sb.from('word_contexts').upsert(rows, { onConflict: 'word_id' });
-        if (u.error) { out.textContent = 'บันทึกไม่สำเร็จ: ตรวจว่าสร้างตาราง word_contexts แล้ว (ดูไฟล์ SQL)'; return; }
-        rows.forEach(function (x) { S.ctx[x.word_id] = x.hint; }); saved += rows.length;
+    var all = await sb.from('zrf_history').select('id', { count: 'exact', head: true });
+    var ver = await sb.from('zrf_history').select('id', { count: 'exact', head: true }).eq('verified', true);
+    var m = await sb.from('zrf_model').select('data').eq('id', 1).maybeSingle();
+    var ms = m && m.data && m.data.data && m.data.data.stats;
+    st.textContent = 'ประวัติทั้งหมด ' + (all.count || 0) + ' · ยืนยันแล้ว ' + (ver.count || 0) +
+      (ms ? ' · โมเดลล่าสุด: ฝึกจาก ' + ms.rows + ' คู่, ความแม่นยำเลือกความหมาย ' + pct(ms.accModel) + ' (ก่อนฝึก ' + pct(ms.accBase) + ', ทดสอบ ' + ms.testLabels + ' จุด)' : ' · ยังไม่เคยฝึก');
+  } catch (e) { st.textContent = 'ยังไม่ได้สร้างตาราง ZRF.AI — รัน supabase-zrf.sql ก่อน'; }
+
+  async function runTrain() {
+    bTrain.disabled = true; msg.textContent = 'กำลังโหลดข้อมูลฝึก…';
+    try {
+      var rows = [], size = 1000;
+      for (var from = 0; ; from += size) {
+        var r = await sb.from('zrf_history').select('dir,src,out,verified').eq('verified', true).range(from, from + size - 1);
+        if (r.error) throw r.error; rows = rows.concat(r.data || []); if ((r.data || []).length < size) break;
       }
-      done += chunk.length; countAI();
-    }
-    out.textContent = 'เสร็จแล้ว: บันทึกบริบท ' + saved + ' รายการ' + (groups.length > todo.length ? ' (เหลืออีก ' + (groups.length - todo.length) + ' กลุ่ม กดอีกครั้งเพื่อทำต่อ)' : '');
-  } catch (e) { out.textContent = 'เกิดข้อผิดพลาด ลองใหม่อีกครั้ง'; }
-}
+      try { var cf = await fetch('./zrf-corpus.json'); if (cf.ok) (await cf.json()).forEach(function (x) { if (!x[2]) rows.push({ dir: 'TZ', src: x[0], out: x[1], verified: true }); rows.push({ dir: 'ZT', src: x[1], out: x[0], verified: true }); }); } catch (e) {}
+      msg.textContent = 'กำลังฝึก (' + rows.length + ' คู่)…';
+      await new Promise(function (ok) { setTimeout(ok, 30); });
+      var model = Z.train(Z.buildIndex(database), rows);
+      var u = await sb.from('zrf_model').upsert({ id: 1, data: model, updated_at: new Date().toISOString() });
+      if (u.error) throw u.error;
+      S.model = model; S.modelLoaded = true; window.zrfAdminRefresh();
+    } catch (e) { msg.textContent = 'ฝึกไม่สำเร็จ: ตรวจว่าเข้าสู่ระบบผู้ดูแลและสร้างตารางแล้ว'; bTrain.disabled = false; }
+  }
+  bTrain.addEventListener('click', runTrain);
 
-/* ---------- เริ่มต้น ---------- */
+  // สอนคู่ประโยค
+  box.appendChild(el('div', 'setting-label', 'สอนคู่ประโยค (ข้อมูลฝึกที่ถูกต้อง)')).style.marginTop = '16px';
+  var t1 = el('textarea', 'admin-textarea'); t1.placeholder = 'ประโยคภาษาไทย'; t1.style.minHeight = '64px';
+  var t2 = el('textarea', 'admin-textarea'); t2.placeholder = 'ประโยคภาษาซานที่ถูกต้อง'; t2.style.minHeight = '64px';
+  var bt = el('button', 'admin-action', 'บันทึกคู่ประโยค'); bt.type = 'button';
+  var w = el('div'); w.style.cssText = 'display:flex;flex-direction:column;gap:10px;margin-top:10px'; w.append(t1, t2, bt); box.appendChild(w);
+  bt.addEventListener('click', async function () {
+    var a = t1.value.trim(), b = t2.value.trim(); if (!a || !b) return;
+    var r = await sb.from('zrf_history').insert([{ dir: 'TZ', src: a, out: b, picks: [], verified: true }, { dir: 'ZT', src: b, out: a, picks: [], verified: true }]);
+    if (r.error) { msg.textContent = 'บันทึกไม่สำเร็จ'; return; }
+    t1.value = ''; t2.value = ''; window.zrfAdminRefresh();
+  });
+
+  // นำเข้าหลายคู่
+  var bl = el('div', 'setting-label', 'นำเข้าหลายคู่พร้อมกัน'); bl.style.marginTop = '16px'; box.appendChild(bl);
+  var tb = el('textarea', 'admin-textarea'); tb.placeholder = 'บรรทัดละ 1 คู่ รูปแบบ: ประโยคไทย | ประโยคซาน'; tb.style.minHeight = '120px';
+  var bb = el('button', 'admin-action', 'นำเข้าและฝึกทันที'); bb.type = 'button';
+  var wb = el('div'); wb.style.cssText = 'display:flex;flex-direction:column;gap:10px;margin-top:10px'; wb.append(tb, bb); box.appendChild(wb);
+  bb.addEventListener('click', async function () {
+    var rows = [];
+    tb.value.split('\n').forEach(function (ln) {
+      var p = ln.split(/\s*[|\t]\s*/); if (p.length < 2) return;
+      var a = p[0].trim(), b = p[1].trim(); if (!a || !b || a.length > 300 || b.length > 300) return;
+      rows.push({ dir: 'TZ', src: a, out: b, picks: [], verified: true }, { dir: 'ZT', src: b, out: a, picks: [], verified: true });
+    });
+    if (!rows.length) { msg.textContent = 'ไม่พบคู่ที่ถูกต้อง (ใช้ | คั่นระหว่างไทยกับซาน)'; return; }
+    bb.disabled = true; msg.textContent = 'กำลังนำเข้า…';
+    for (var i = 0; i < rows.length; i += 200) {
+      var r = await sb.from('zrf_history').insert(rows.slice(i, i + 200));
+      if (r.error) { msg.textContent = 'นำเข้าไม่สำเร็จ'; bb.disabled = false; return; }
+    }
+    tb.value = ''; await runTrain();
+  });
+
+  // ตรวจประวัติ
+  try {
+    var h = await sb.from('zrf_history').select('id,dir,src,out').eq('verified', false).order('id', { ascending: false }).limit(8);
+    if (h.data && h.data.length) {
+      var hh = el('div', 'setting-label', 'ตรวจคำแปลล่าสุด (แก้ให้ถูกแล้วกดยืนยัน)'); hh.style.marginTop = '16px'; box.appendChild(hh);
+      h.data.forEach(function (row) {
+        var c = el('div'); c.style.cssText = 'display:flex;flex-direction:column;gap:8px;margin-top:10px';
+        c.appendChild(el('div', 'setting-note', (row.dir === 'TZ' ? 'ไทย→ซาน: ' : 'ซาน→ไทย: ') + row.src));
+        var ta = el('textarea', 'admin-textarea'); ta.value = row.out; ta.style.minHeight = '56px';
+        var ok = el('button', 'admin-action', 'ยืนยัน'); ok.type = 'button';
+        ok.addEventListener('click', async function () {
+          var u = await sb.from('zrf_history').update({ out: ta.value.trim(), verified: true }).eq('id', row.id);
+          if (!u.error) c.remove();
+        });
+        c.append(ta, ok); box.appendChild(c);
+      });
+    }
+  } catch (e) {}
+};
+
 window.addEventListener('load', function () {
   var sw = $('ztSwap'); if (!sw) return;
   sw.addEventListener('click', function () { setDir(S.dir === 'TZ' ? 'ZT' : 'TZ'); });
   $('ztGo').addEventListener('click', window.ztRun);
   $('ztInput').addEventListener('keydown', function (e) { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); window.ztRun(); } });
-  var q = new URLSearchParams(location.search).get('shortcut'); if (q === 'translate') setTimeout(function () { window.ztView('trans'); }, 400);
+  if (new URLSearchParams(location.search).get('shortcut') === 'translate') setTimeout(function () { window.ztView('trans'); }, 400);
 });
 })();
 
