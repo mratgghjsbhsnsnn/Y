@@ -4,7 +4,7 @@
  * dictionary candidates. The dictionary is authoritative for Zarephia spellings; AI chooses by meaning.
  */
 
-const MODELS = (process.env.GEMINI_MODELS || 'gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash-lite')
+const MODELS = (process.env.GEMINI_MODELS || 'gemini-3.8-flash,gemini-3.5-flash-lite,gemini-3.6-flash')
   .split(',').map(s => s.trim()).filter(Boolean);
 
 const RULES = `You are the translation engine for Zaan Translate, a Thai ↔ Zarephia (ภาษาซาน) translator.
@@ -90,7 +90,8 @@ async function run(system, text, schema, thinkingLevel) {
       last = { status: 502, json: {} };
       continue;
     }
-    if (res.status === 429 || res.status === 404 || res.status === 503 || res.status === 400) continue;
+    if (res.status === 429) break; // quota/rate limit: fallback retries are unlikely to help and only add latency
+    if (res.status === 404 || res.status === 503 || res.status === 400) continue;
     break;
   }
   return { ok: false, status: last.status };
@@ -164,7 +165,7 @@ module.exports = async (req, res) => {
       properties: { out: { type: 'STRING' }, ids: { type: 'ARRAY', items: { type: 'STRING' } }, note: { type: 'STRING' } },
       required: ['out', 'ids', 'note']
     };
-    const r = await run(RULES, text, schema, 'high');
+    const r = await run(RULES, text, schema, 'medium');
     if (!r.ok) return res.status(r.status === 429 ? 429 : 502).end(JSON.stringify({ error: r.status === 429 ? 'quota' : 'ai' }));
 
     const allowedIds = new Set();
