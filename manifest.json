@@ -1,16 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest.json",
-  "id": "./",
-  "name": "พจนานุกรมฉบับซาราซาคสกุล · Zaan Translate",
+  "id": "/",
+  "name": "พจนานุกรมฉบับซาราซาคสกุล",
   "short_name": "พจนานุกรมซาราซาค",
-  "description": "พจนานุกรมภาษาซาน — ค้นหาคำศัพท์และแปลภาษาด้วย Zaan Translate",
+  "description": "พจนานุกรมภาษาซาน — ค้นหาและเปิดดูรายละเอียดคำศัพท์",
   "lang": "th",
   "dir": "ltr",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "display_override": [
     "standalone",
+    "window-controls-overlay",
     "minimal-ui"
   ],
   "orientation": "any",
@@ -24,22 +25,22 @@
   ],
   "icons": [
     {
-      "src": "./icons/icon-192.png",
+      "src": "/icons/app-logo.png",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "./icons/icon-512.png",
+      "src": "/icons/app-logo.png",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "./icons/icon-maskable.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "src": "/icons/app-logo.png",
+      "sizes": "any",
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ],
   "shortcuts": [
@@ -47,26 +48,12 @@
       "name": "ค้นหาคำศัพท์",
       "short_name": "ค้นหา",
       "description": "เปิดพจนานุกรมพร้อมช่องค้นหา",
-      "url": "./?shortcut=search",
+      "url": "/?shortcut=search",
       "icons": [
         {
-          "src": "./icons/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png",
-          "purpose": "any"
-        }
-      ]
-    },
-    {
-      "name": "Zaan Translate",
-      "short_name": "แปลภาษา",
-      "description": "เปิดหน้าแปลภาษาไทย ⇆ ซาน",
-      "url": "./?shortcut=translate",
-      "icons": [
-        {
-          "src": "./icons/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png",
+          "src": "/icons/app-logo.png",
+          "sizes": "any",
+          "type": "image/jpeg",
           "purpose": "any"
         }
       ]
@@ -75,12 +62,12 @@
       "name": "ระบบควบคุม",
       "short_name": "ระบบควบคุม",
       "description": "เปิดหน้าล็อกอินระบบควบคุม",
-      "url": "./?shortcut=admin",
+      "url": "/?shortcut=admin",
       "icons": [
         {
-          "src": "./icons/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png",
+          "src": "/icons/app-logo.png",
+          "sizes": "any",
+          "type": "image/jpeg",
           "purpose": "any"
         }
       ]
