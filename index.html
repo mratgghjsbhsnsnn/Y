@@ -1377,7 +1377,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = api; else 
 'use strict';
 var AI_URL = '/api/translate';
 var DEVICE_DAILY_CAP = 25;      // จำนวนครั้งที่เครื่องหนึ่งเรียก AI ได้ต่อวัน (ปรับได้)
-var MIN_GAP_MS = 2500;          // เว้นระยะอย่างน้อยระหว่างการเรียก AI
+var MIN_GAP_MS = 0;             // ไม่หน่วงเวลาเพิ่มก่อนเรียก AI; ใช้ cache และ rate limit ฝั่งเซิร์ฟเวอร์แทน
 var COOLDOWN_MS = 10 * 60000;   // พักการเรียก AI หลังโควตาเต็ม (429)
 var CACHE_MAX = 150;
 var Z = window.ZTE;
@@ -1454,7 +1454,7 @@ function render(dir, text, r) {
 
 /* ---------- แคช ---------- */
 function cacheKey(dir, text) {
-  return Z.cyrb('zaan-engine-v2|' + dir + '|' + Z.norm(text) + '|' + database.length + '|' + (systemConfig && systemConfig.LastUpdate || '') + '|' + Object.keys(S.ctx).length);
+  return Z.cyrb('zaan-engine-v3-fast|' + dir + '|' + Z.norm(text) + '|' + database.length + '|' + (systemConfig && systemConfig.LastUpdate || '') + '|' + Object.keys(S.ctx).length);
 }
 function cacheGet(k) { var c = lsGet('cache', {}); return c[k] ? c[k].v : null; }
 function cachePut(k, v) {
@@ -1482,7 +1482,7 @@ function setStatus(t) { var s = $('ztStatus'); if (s) s.textContent = t; }
 async function callAI(body) {
   var wait = S.lastAI + MIN_GAP_MS - Date.now(); if (wait > 0) await new Promise(function (r) { setTimeout(r, wait); });
   S.lastAI = Date.now();
-  var ctl = new AbortController(), to = setTimeout(function () { ctl.abort(); }, 50000);
+  var ctl = new AbortController(), to = setTimeout(function () { ctl.abort(); }, 30000);
   try {
     var r = await fetch(AI_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: ctl.signal });
     var j = await r.json().catch(function () { return {}; });
