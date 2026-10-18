@@ -1,11 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
-    {
-      "source": "/icons/app-logo.png",
-      "destination": "https://i.ibb.co/sdJ4tR47/513-20260917152649.png"
-    }
-  ],
   "headers": [
     {
       "source": "/sw.js",
@@ -17,6 +11,10 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
         }
       ]
     },
@@ -47,17 +45,31 @@
       ]
     },
     {
-      "source": "/icons/app-logo.png",
+      "source": "/icons/(.*)",
       "headers": [
         {
-          "key": "Content-Type",
-          "value": "image/png"
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         },
         {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
           "key": "Cache-Control",
-          "value": "public, max-age=3600, must-revalidate"
+          "value": "no-store"
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/translate.js": {
+      "maxDuration": 60
+    }
+  }
 }

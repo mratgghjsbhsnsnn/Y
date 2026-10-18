@@ -1,9 +1,12 @@
-const CACHE_NAME = 'zarephia-dictionary-pwa-v4-supabase';
+const CACHE_NAME = 'zarephia-dictionary-pwa-v6';
 const APP_SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './manifest.json'
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  './icons/icon-maskable.png',
+  './icons/app-logo.jpg'
 ];
 
 self.addEventListener('install', event => {
@@ -18,42 +21,47 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
       .then(keys => Promise.all(
-        keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
       ))
       .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', event => {
-  const req = event.request;
-  if (req.method !== 'GET') return;
-  const url = new URL(req.url);
-  if (url.origin !== self.location.origin) return;
+  const request = event.request;
+  if (request.method !== 'GET') return;
 
-  if (req.mode === 'navigate') {
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+  if (url.pathname.startsWith('/api/')) return;
+
+  // Always try the network for HTML so deployed updates become available,
+  // then fall back to the cached app shell when offline.
+  if (request.mode === 'navigate') {
     event.respondWith(
-      fetch(req, {cache:'no-store'})
-        .then(res => {
-          if (res && res.ok) {
-            const copy=res.clone();
-            caches.open(CACHE_NAME).then(c => c.put('./index.html', copy)).catch(()=>{});
+      fetch(request, { cache: 'no-store' })
+        .then(response => {
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put('./index.html', copy)).catch(() => {});
           }
-          return res;
+          return response;
         })
-        .catch(() => caches.match('./index.html').then(cached => cached || new Response('Offline', {status:503})))
+        .catch(() => caches.match('./index.html'))
     );
     return;
   }
 
+  // Cache-first for same-origin static assets, with a network fallback.
   event.respondWith(
-    caches.match(req).then(cached => {
-      if(cached) return cached;
-      return fetch(req).then(res => {
-        if(res && res.ok){
-          const copy=res.clone();
-          caches.open(CACHE_NAME).then(c => c.put(req, copy)).catch(()=>{});
+    caches.match(request).then(cached => {
+      if (cached) return cached;
+      return fetch(request).then(response => {
+        if (response && response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(request, copy)).catch(() => {});
         }
-        return res;
+        return response;
       });
     })
   );
